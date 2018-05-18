@@ -6,9 +6,31 @@
     android:layout_height="match_parent"
     tools:context="com.example.apuitiza.control_inventarioapp.activities.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/contenedor"
+    <LinearLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <com.gigamole.navigationtabstrip.NavigationTabStrip
+            android:id="@+id/nts_center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:nts_active_color="?attr/colorPrimary"
+            app:nts_color="?attr/colorPrimary"
+            app:nts_gravity="bottom"
+            app:nts_inactive_color="#4b4b4b"
+            app:nts_corners_radius="1dp"
+            app:nts_titles="@array/titles"
+            app:nts_type="point"
+            app:nts_weight="5dp" />
+
+        <FrameLayout
+            android:id="@+id/contenedor"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Movimiento</string>
+    <string name="app_name">Control de Inventario</string>
+    <array name="titles">
+        <item>Movimientos</item>
+        <item>Productos</item>
+    </array>
 </resources>
