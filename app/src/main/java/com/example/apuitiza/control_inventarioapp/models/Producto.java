@@ -1,6 +1,8 @@
 package com.example.apuitiza.control_inventarioapp.models;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable{
 
     private int id;
     private String nombre;

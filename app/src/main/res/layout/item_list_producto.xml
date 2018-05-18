@@ -3,14 +3,47 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:weightSum="4"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_weight="0.5"
+        android:id="@+id/ivImagenProduct"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:background="#8b8b8b"
+        android:scaleType="centerCrop" />
     <TextView
+        android:layout_weight="3"
         android:id="@+id/nameProduct"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="asdasddasda"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:layout_height="wrap_content" />
+        android:textSize="25sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+         />
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/stockProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_gravity="center"
+            android:textSize="35sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unidades"
+            android:layout_gravity="center"
+            android:textSize="15sp"/>
+    </LinearLayout>
 </LinearLayout>

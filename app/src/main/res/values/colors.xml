@@ -6,4 +6,11 @@
     <color name="white">#FFFFFF</color>
     <color name="green">#0cd738</color>
     <color name="red">#d70404</color>
+    <color name="teal_300">#4DB6AC</color>
+    <color name="black_light">#424242</color>
+
+    <color name="entrada_producto">#00b33c</color>
+    <color name="salida_producto">#FF4700</color>
+    <color name="default_black">#808080</color>
+
 </resources>

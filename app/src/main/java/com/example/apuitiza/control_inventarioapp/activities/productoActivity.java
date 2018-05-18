@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.apuitiza.control_inventarioapp.adapters.ProductoRecyclerAdapter;
+import com.example.apuitiza.control_inventarioapp.models.Movimiento;
 import com.example.apuitiza.control_inventarioapp.models.Producto;
 import com.example.apuitiza.control_inventarioapp.R;
 
@@ -32,8 +34,10 @@ public class productoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto);
-        getSupportActionBar().setTitle("Seleccione Producto");
 
+        showToolbar("Seleccione producto",true);
+
+        /*
         lista_productos =  new ArrayList<>();
 
         lista_productos.add(new Producto("colgate"));
@@ -45,13 +49,14 @@ public class productoActivity extends AppCompatActivity {
         lista_productos.add(new Producto("colgate"));
         lista_productos.add(new Producto("colgate"));
         lista_productos.add(new Producto("colgate"));
-        lista_productos.add(new Producto("colgate"));
+        lista_productos.add(new Producto("colgate"));*/
 
         productoRecycler = findViewById(R.id.recycleProduct);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         productoRecycler.setLayoutManager(linearLayoutManager);
-
+        lista_productos = new ArrayList<>();
+        lista_productos.add(new Producto(1,"Coca cola",10,"https://s2.dia.es/medias/hc3/h62/9311516164126.jpg",""));
         recyclerAdapter = new ProductoRecyclerAdapter(lista_productos,productoActivity.this);
 
         productoRecycler.setAdapter(recyclerAdapter);
@@ -81,6 +86,13 @@ public class productoActivity extends AppCompatActivity {
         });
         return true;
     }
+    public void showToolbar(String tittle, boolean upButton){
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(tittle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+    }
+
 
     private List<Producto> filter(List<Producto> pl,String query)
     {
@@ -95,6 +107,12 @@ public class productoActivity extends AppCompatActivity {
             }
         }
         return filteredModeList;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        super.onBackPressed();
+        return super.onSupportNavigateUp();
     }
 
     private void changeSearchViewTextColor(View view) {
