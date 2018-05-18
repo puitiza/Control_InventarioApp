@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,14 +9,14 @@
     android:weightSum="4"
     android:padding="10dp">
 
-    <ImageView
-        android:layout_weight="0.5"
+
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/ivImagenProduct"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="10dp"
-        android:background="#8b8b8b"
-        android:scaleType="centerCrop" />
+        app:civ_border_color="#e4e4e4"
+        app:civ_border_width="0dp"
+        android:layout_marginEnd="10dp"/>
     <TextView
         android:layout_weight="3"
         android:id="@+id/nameProduct"

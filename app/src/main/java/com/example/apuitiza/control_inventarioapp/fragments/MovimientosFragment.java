@@ -67,7 +67,7 @@ public class MovimientosFragment extends Fragment {
         rvMovimientos.setLayoutManager(ll);
         rvMovimientos.setHasFixedSize(true);
         mMovimientos = new ArrayList<>();
-        mMovimientos.add(new Movimiento(1,1,new Producto(1,"COLGATE",10,"https://s2.dia.es/medias/hc3/h62/9311516164126.jpg",""),"10:30",10));
+        mMovimientos.add(new Movimiento(1,1,new Producto(1,"COLGATE",10,"https://s2.dia.es/medias/hc3/h62/9311516164126.jpg",""),"24/10/2018 10:30",10));
         rvAdapterMovimiento.setAll(mMovimientos);
 
         //loadMovimientos();

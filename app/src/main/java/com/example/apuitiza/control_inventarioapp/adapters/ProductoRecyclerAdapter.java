@@ -17,6 +17,7 @@ import com.example.apuitiza.control_inventarioapp.activities.NuevoMovimientoActi
 import com.example.apuitiza.control_inventarioapp.activities.productoActivity;
 import com.example.apuitiza.control_inventarioapp.models.Producto;
 import com.example.apuitiza.control_inventarioapp.R;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class ProductoRecyclerAdapter extends RecyclerView.Adapter<ProductoRecycl
     class ProductoViewHolder extends RecyclerView.ViewHolder{
 
         private TextView nameProducto;
-        private ImageView ivImagenProduct;
+        private CircularImageView ivImagenProduct;
         private TextView stockProduct;
 
         public ProductoViewHolder(View itemView) {

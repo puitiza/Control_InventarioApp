@@ -1,5 +1,7 @@
 package com.example.apuitiza.control_inventarioapp.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -7,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.apuitiza.control_inventarioapp.R;
@@ -21,6 +24,8 @@ public class NuevoMovimientoActivity extends AppCompatActivity {
     RadioRealButton btnEntrada, btnSalida;
     RadioRealButtonGroup groupButton;
     MaterialEditText edtProduct;
+    Button btn_GuardarMov ;
+    Producto prod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +38,7 @@ public class NuevoMovimientoActivity extends AppCompatActivity {
         btnEntrada =  findViewById(R.id.rbtn_entrada);
         btnSalida = findViewById(R.id.rbtn_salida);
         edtProduct = findViewById(R.id.edtproducto);
-        /*groupButton.setOnClickedButtonListener(new RadioRealButtonGroup.OnClickedButtonListener() {
-            @Override
-            public void onClickedButton(RadioRealButton button, int position) {
-
-            }
-        });*/
+        btn_GuardarMov = findViewById(R.id.btn_GuardarMov);
         groupButton.setPosition(0);
 
         disableKeyBoardEditText(edtProduct);
@@ -49,6 +49,20 @@ public class NuevoMovimientoActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
+       btn_GuardarMov.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               AlertDialog.Builder builder = new AlertDialog.Builder(NuevoMovimientoActivity.this);
+               if(groupButton.getPosition()==0){
+                   builder.setTitle("Confirmación");
+                   builder.setMessage("¿Esta seguro que desea agregar: "+prod.getStock()+" unidades al stock");
+               }if(groupButton.getPosition()==1){
+                   builder.setTitle("Confirmación");
+                   builder.setMessage("¿Esta seguro que desea retirar: "+prod.getStock()+" unidades al stock");
+               }
+               builder.show();
+           }
+       });
 
     }
 
@@ -72,9 +86,9 @@ public class NuevoMovimientoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
             if(resultCode == RESULT_OK){
-                Producto p = (Producto) data.getSerializableExtra("producto");
-                edtProduct.setTag(p);
-                edtProduct.setText(p.getNombre());
+                prod = (Producto) data.getSerializableExtra("producto");
+
+                edtProduct.setText(prod.getNombre());
             }
         }
     }

@@ -18,9 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.NuevoMovimientoActivity"></activity>
-        <activity android:name=".activities.productoActivity"/>
-        <activity android:name=".activities.DetalleMovimiento" android:theme="@style/AppTheme2"></activity>
+        <activity android:name=".activities.NuevoMovimientoActivity" />
+        <activity android:name=".activities.productoActivity" />
+        <activity
+            android:name=".activities.DetalleMovimiento"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".activities.DetalleProducto"></activity>
     </application>
 
 </manifest>

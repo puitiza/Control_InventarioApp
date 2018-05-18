@@ -15,6 +15,8 @@ import com.example.apuitiza.control_inventarioapp.activities.DetalleMovimiento;
 import com.example.apuitiza.control_inventarioapp.models.Movimiento;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,24 +27,23 @@ public class RvAdapterMovimiento extends RecyclerView.Adapter<RvAdapterMovimient
 
     private Context mContext;
     private List<Movimiento> mMovimientos;
+    private SimpleDateFormat sdf;
 
     public static class MovimentoViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView ivImagen;
         public TextView tvDescripcion;
         public TextView tvFechaHora;
-        public ImageView ivTipoMovimiento;
         public TextView tvCantidadMovimiento;
-        public TextView tvStock;
+        public TextView tvUnidades;
 
         public MovimentoViewHolder(View v) {
             super(v);
-            ivImagen = v.findViewById(R.id.ivImagenProducto);
+            ivImagen = v.findViewById(R.id.civImagenProducto);
             tvDescripcion = v.findViewById(R.id.tvDescripcionProducto);
             tvFechaHora = v.findViewById(R.id.tvFechaHoraMovimiento);
-            ivTipoMovimiento = v.findViewById(R.id.ivTipoMovimiento);
             tvCantidadMovimiento = v.findViewById(R.id.tvCantidadMovimiento);
-            tvStock = v.findViewById(R.id.tvStockProducto);
+            tvUnidades = v.findViewById(R.id.tvUnidadesMovimiento);
         }
     }
 
@@ -53,6 +54,7 @@ public class RvAdapterMovimiento extends RecyclerView.Adapter<RvAdapterMovimient
     public RvAdapterMovimiento(Context context, List<Movimiento> movimientos) {
         this.mContext = context;
         this.mMovimientos = movimientos;
+        this.sdf = new SimpleDateFormat("MMM dd\nyyy");
     }
 
     @Override
@@ -72,13 +74,11 @@ public class RvAdapterMovimiento extends RecyclerView.Adapter<RvAdapterMovimient
 
         Picasso.with(mContext).load(m.getProducto().getUrl()).into(viewHolder.ivImagen);
         viewHolder.tvDescripcion.setText(m.getProducto().getNombre());
-        viewHolder.tvFechaHora.setText(m.getFechaHora());
+        viewHolder.tvFechaHora.setText(sdf.format(new Date(m.getFechaHora())));
         viewHolder.tvCantidadMovimiento.setText(String.valueOf(m.getCantidad()));
-        viewHolder.tvStock.setText(String.valueOf(m.getProducto().getStock()));
-        viewHolder.ivTipoMovimiento.setImageResource(m.getTipo() == 1 ? R.drawable.arrow_up : R.drawable.arrow_down);
         viewHolder.tvCantidadMovimiento.setText((m.getTipo() == 1 ? " + " : " - ") + String.valueOf(m.getCantidad()));
         viewHolder.tvCantidadMovimiento.setTextColor(m.getTipo() == 1 ? ContextCompat.getColor(mContext,R.color.green) :ContextCompat.getColor(mContext,R.color.red));
-
+        viewHolder.tvUnidades.setTextColor(m.getTipo() == 1 ? ContextCompat.getColor(mContext,R.color.green) :ContextCompat.getColor(mContext,R.color.red));
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
